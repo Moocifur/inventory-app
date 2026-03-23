@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name %></title>
+</head>
+<body>
+    <a href="/categories">← Back to Categories</a>
+    <h1><%= product.name %></h1>
+    <ul>
+        <li>Item No: <%= product.item_no %></li>
+        <li>Alliant Part No: <%= product.alliant_part_no %></li>
+        <li>Quantity: <%= product.quantity %></li>
+        <li>Weight: <%= product.weight %></li>
+        <li>UPC: <%= product.upc %></li>
+        <li>Country of Origin: <%= product.country_of_origin %></li>
+    </ul>
+</body>
+</html>
