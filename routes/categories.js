@@ -3,6 +3,8 @@ const router = express.Router();
 const categoriesController = require("../controllers/categoriesController");
 
 router.get("/", categoriesController.listCategories);
+router.get("/new", categoriesController.newCategoryForm);
+router.post("/new", categoriesController.createCategory)
 router.get("/:id", categoriesController.getCategory);
 
 module.exports = router;

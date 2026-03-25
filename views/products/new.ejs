@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Product</title>
+</head>
+<body>
+    <a href="/categories">← Back to Categories</a>
+    <h1>New Product</h1>
+    <form method="POST" action="/products/new">
+        <div>
+            <label for="item_no">Item No:</label>
+            <input type="text" id="item_no" name="item_no" required>
+        </div>
+        <div>
+            <label for="alliant_part_no">Alliant Part No:</label>
+            <input type="text" id="alliant_part_no" name="alliant_part_no">
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="product_group_id">Product Group:</label>
+            <select id="product_group_id" name="product_group_id">
+                <% productGroups.forEach(group => { %>
+                    <option value="<%= group.id %>"><%= group.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="0">
+        </div>
+        <div>
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight">
+        </div>
+        <div>
+            <label for="upc">UPC:</label>
+            <input type="text" id="upc" name="upc">
+        </div>
+        <div>
+            <label for="country_of_origin">Country of Origin:</label>
+            <input type="text" id="country_of_origin" name="country_of_origin">
+        </div>
+        <button type="submit">Create Product</button>
+    </form>
+</body>
+</html>

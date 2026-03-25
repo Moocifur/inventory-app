@@ -10,4 +10,14 @@ exports.getCategory = async (req, res) => {
     const category = await db.getCategoryById(id);
     const products = await db.getProductsByCategory(id);
     res.render("categories/show", { category, products });
+}
+
+exports.newCategoryForm = (req, res) => {
+    res.render("categories/new");
+};
+
+exports.createCategory = async (req, res) => {
+    const { name, description } = req.body;
+    await db.createCategory(name, description);
+    res.redirect("/categories");
 };

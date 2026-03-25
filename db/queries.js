@@ -36,6 +36,28 @@ async function getProductsByCategory(id) {
     return rows;
 }
 
+async function createCategory(name, description) {
+    await pool.query(
+        "INSERT INTO categories (name, description) VALUES ($1, $2)",
+        [name, description]
+    );
+}
+
+async function getAllProductGroups() {
+    const { rows } = await pool.query("SELECT * FROM product_groups");
+    return rows;
+}
+
+async function createProduct(item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin) {
+    await pool.query(
+        `INSERT INTO products
+        (item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+        [item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin]
+    );
+}
+
 module.exports = { getAllCategories, getAllProducts, getCategoryById,
-    getProductsByCategory, getProductById
+    getProductsByCategory, getProductById, createCategory, getAllProductGroups,
+    createProduct
  };
