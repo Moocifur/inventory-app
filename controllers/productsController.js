@@ -21,3 +21,17 @@ exports.createProduct = async (req, res) => {
     await db.createProduct(item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin);
     res.redirect("/categories");
 };
+
+exports.editProductForm = async (req, res) => {
+    const { id } = req.params;
+    const product = await db.getProductById(id);
+    res.render("products/edit", { product });
+};
+
+exports.updateProduct = async (req, res) => {
+    const { id } = req.params;
+    const { item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin } = req.body;
+    await db.updateProduct(id, item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin);
+    res.redirect("/categories")
+};
+

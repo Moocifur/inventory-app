@@ -57,7 +57,21 @@ async function createProduct(item_no, alliant_part_no, name, product_group_id, q
     );
 }
 
+async function updateCategory(id, name, description) {
+    await pool.query(
+        "UPDATE categories SET name = $1, description = $2 WHERE id = $3",
+        [name, description, id]
+    )
+}
+
+async function updateProduct(id, item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin) {
+    await pool.query(
+        "UPDATE products SET item_no = $1, alliant_part_no = $2, name = $3, product_group_id = $4, quantity = $5, weight = $6, upc = $7, country_of_origin = $8 WHERE id = $9",
+        [item_no, alliant_part_no, name, product_group_id, quantity, weight, upc, country_of_origin, id]
+    )
+}
+
 module.exports = { getAllCategories, getAllProducts, getCategoryById,
     getProductsByCategory, getProductById, createCategory, getAllProductGroups,
-    createProduct
+    createProduct, updateCategory, updateProduct
  };

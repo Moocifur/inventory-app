@@ -8,6 +8,7 @@
 <body>
     <a href="/categories">← Back to Categories</a>
     <h1><%= category.name %></h1>
+    <a href="/categories/<%= category.id %>/edit">Edit Category</a>
     <ul>
         <% products.forEach(product => { %>
             <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>

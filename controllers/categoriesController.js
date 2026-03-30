@@ -21,3 +21,16 @@ exports.createCategory = async (req, res) => {
     await db.createCategory(name, description);
     res.redirect("/categories");
 };
+
+exports.editCategoryForm = async (req, res) => {
+    const { id } = req.params;
+    const category = await db.getCategoryById(id);
+    res.render("categories/edit", { category });
+};
+
+exports.updateCategory = async (req, res) => {
+    const { id } = req.params;
+    const { name, description } = req.body;
+    await db.updateCategory(id, name, description);
+    res.redirect("/categories");
+}
