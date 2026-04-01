@@ -8,7 +8,13 @@
 <body>
     <a href="/categories">← Back to Categories</a>
     <h1><%= category.name %></h1>
+    <% if (typeof error !== 'undefined') { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
     <a href="/categories/<%= category.id %>/edit">Edit Category</a>
+    <form method="POST" action="/categories/<%= category.id %>/delete">
+        <button type="submit">Delete Category</button>
+    </form>
     <ul>
         <% products.forEach(product => { %>
             <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>

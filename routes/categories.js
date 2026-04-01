@@ -7,6 +7,7 @@ router.get("/new", categoriesController.newCategoryForm);
 router.post("/new", categoriesController.createCategory)
 router.get("/:id/edit", categoriesController.editCategoryForm);
 router.post("/:id/edit", categoriesController.updateCategory);
+router.post("/:id/delete", categoriesController.deleteCategory);
 router.get("/:id", categoriesController.getCategory);
 
 module.exports = router;

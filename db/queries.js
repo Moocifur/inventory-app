@@ -71,7 +71,22 @@ async function updateProduct(id, item_no, alliant_part_no, name, product_group_i
     )
 }
 
+async function deleteCategory(id) {
+    await pool.query(
+        "DELETE FROM categories WHERE id = $1",
+        [id]
+    );
+}
+
+async function deleteProduct(id) {
+    await pool.query(
+        "DELETE FROM products WHERE id = $1",
+        [id]
+    );
+}
+
 module.exports = { getAllCategories, getAllProducts, getCategoryById,
     getProductsByCategory, getProductById, createCategory, getAllProductGroups,
-    createProduct, updateCategory, updateProduct
+    createProduct, updateCategory, updateProduct, deleteCategory, deleteProduct,
+    
  };

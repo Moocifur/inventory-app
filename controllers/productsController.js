@@ -35,3 +35,8 @@ exports.updateProduct = async (req, res) => {
     res.redirect("/categories")
 };
 
+exports.deleteProduct = async (req, res) => {
+    const { id } = req.params;
+    await db.deleteProduct(id);
+    res.redirect("/categories");
+};

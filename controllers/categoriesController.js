@@ -34,3 +34,19 @@ exports.updateCategory = async (req, res) => {
     await db.updateCategory(id, name, description);
     res.redirect("/categories");
 }
+
+exports.deleteCategory = async (req,res) => {
+    const { id } = req.params;
+    try {
+        await db.deleteCategory(id);
+        res.redirect("/categories");
+    } catch (err) {
+        const category = await db.getCategoryById(id);
+        const products = await db.getProductsByCategory(id);
+        res.render("categories/show", {
+            category,
+            products,
+            error: "Caonnot delete a category that has products in it."
+        });
+    }
+};
